@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const compression = require('compression');
 
 
 const AppError = require('./utils/appError');
@@ -24,6 +25,7 @@ const limiter = rateLimit({
 })
 app.use('/api', limiter)
 
+app.use(compression());
 
 // Set security HTTP headers
 app.use(helmet());
